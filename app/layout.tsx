@@ -1,8 +1,9 @@
-import { cn } from "@/utils/tailwind";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import { ThemeProvider } from "@/providers/theme-provider";
+import MobileNavigation from "@/components/ui/mobileNavigation";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -18,10 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn("bg-zinc-950 px-6 py-5 text-slate-200", montserrat.className)}>
+      <body className={cn("flex flex-col bg-black px-6 py-5 text-slate-200", montserrat.className)}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
+          <div className="mb-20">
+            {children}
+          </div>
         </ThemeProvider>
+        <MobileNavigation />
       </body>
     </html>
   );
