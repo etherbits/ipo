@@ -1,10 +1,10 @@
 import { cn } from "@/utils/tailwind";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import { ThemeProvider } from "@/providers/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,8 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn("bg-zinc-950 px-6 py-5 text-slate-200", inter.className)}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={cn("bg-zinc-950 px-6 py-5 text-slate-200", montserrat.className)}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>
       </body>
