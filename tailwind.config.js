@@ -6,8 +6,11 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
+    screens: {
+      "xm": "320px",
+    },
     container: {
       center: true,
       padding: "2rem",

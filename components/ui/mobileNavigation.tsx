@@ -24,7 +24,7 @@ const MobileNavigation: React.FC = () => {
             <Link
               href={link.href}
               className={cn(
-                "flex flex-col items-center gap-1 bg-transparent hover:bg-zinc-800 w-full h-full p-4",
+                "flex flex-col items-center gap-1 bg-transparent hover:bg-zinc-900 w-full h-full p-3 xm:p-4 ",
               )}
             >
               <Icon
