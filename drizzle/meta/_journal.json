@@ -50,6 +50,20 @@
       "when": 1695913731350,
       "tag": "0006_worthless_veda",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1695914610228,
+      "tag": "0007_modern_thunderball",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1695914838015,
+      "tag": "0008_deep_groot",
+      "breakpoints": true
     }
   ]
 }
