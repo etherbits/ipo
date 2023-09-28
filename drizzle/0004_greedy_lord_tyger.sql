@@ -1,0 +1,1 @@
+ALTER TABLE `users` MODIFY COLUMN `id` binary(64) NOT NULL DEFAULT (UUID());

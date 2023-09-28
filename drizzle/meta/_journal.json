@@ -1,0 +1,55 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1695912955194,
+      "tag": "0000_opposite_rage",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1695913230032,
+      "tag": "0001_melodic_mole_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1695913287708,
+      "tag": "0002_perpetual_smasher",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1695913339687,
+      "tag": "0003_familiar_mongoose",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1695913457832,
+      "tag": "0004_greedy_lord_tyger",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1695913539453,
+      "tag": "0005_mysterious_lethal_legion",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1695913731350,
+      "tag": "0006_worthless_veda",
+      "breakpoints": true
+    }
+  ]
+}
