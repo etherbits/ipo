@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm";
 import {
   binary,
+  datetime,
   int,
   mysqlTable,
   smallint,
@@ -19,6 +20,7 @@ export const workouts = mysqlTable("workouts", {
     .primaryKey()
     .default(sql`(UUID_TO_BIN(UUID()))`),
   title: varchar("name", { length: 256 }).notNull(),
+  userId: binary("user_id", { length: 16 }).notNull(),
 });
 
 export const exercise = mysqlTable("exercises", {
@@ -29,12 +31,13 @@ export const exercise = mysqlTable("exercises", {
   setCount: smallint("set_count").notNull(),
   repCount: smallint("rep_count"),
   durationSecs: int("duration_seconds"),
+  userId: binary("user_id", { length: 16 }).notNull(),
 });
 
 export const workoutExercises = mysqlTable("workoutExercises", {
   id: binary("id", { length: 16 })
     .primaryKey()
     .default(sql`(UUID_TO_BIN(UUID()))`),
-  workoutId: binary("id", { length: 16 }).notNull(),
-  exerciseId: binary("id", { length: 16 }).notNull(),
+  workoutId: binary("workout_id", { length: 16 }).notNull(),
+  exerciseId: binary("workout_id", { length: 16 }).notNull(),
 });
