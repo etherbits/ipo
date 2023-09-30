@@ -15,16 +15,22 @@ export default async function Home() {
   async function addWorkout() {
     "use server";
 
-    //! temporary before auth
+    //! temporary before auth + drizzle odd
     const res = await db.select({ id: sql`BIN_TO_UUID(id)` }).from(users);
 
-    await db
-      .insert(workouts)
-      .values({ title: "", userId: sql`UUID_TO_BIN(${res[0].id})` });
+    await db.delete(workouts);
+    //!
+
+    await db.insert(workouts).values({
+      title: "Untitled Workout",
+      userId: sql`UUID_TO_BIN(${res[0].id})`,
+    });
 
     const newWorkout = (await db
       .select({ id: sql`BIN_TO_UUID(id)` })
       .from(workouts)) as { id: string }[];
+
+    console.log(newWorkout);
 
     redirect(`/workout/${newWorkout.at(-1)?.id}`);
   }
