@@ -7,7 +7,9 @@ import { SQL, desc, sql } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
 async function getWorkouts() {
-  const res = await db.select().from(workouts);
+  const res = await db
+    .select({ id: sql`BIN_TO_UUID(id)` as SQL<string>, title: workouts.title })
+    .from(workouts);
   return res;
 }
 
@@ -56,7 +58,7 @@ export default async function Home() {
       </section>
       <ul className="flex flex-col gap-5">
         {workoutList.map((workout) => {
-          return <WorkoutCard key={workout.id} />;
+          return <WorkoutCard key={workout.id} {...workout} />;
         })}
       </ul>
     </main>
