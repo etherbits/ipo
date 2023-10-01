@@ -44,10 +44,10 @@ export default async function Home() {
         <h1 className="xm:absolute xm:left-1/2 xm:-translate-x-1/2 text-2xl font-bold text-center">
           Workouts
         </h1>
-        <form action={addWorkout}>
+        <form action={addWorkout} className="ml-auto">
           <Button
             size="icon"
-            className="ml-auto bg-transparent border-none"
+            className="bg-transparent border-none"
             variant="outline"
           >
             <Icon name="Plus" />
