@@ -5,7 +5,7 @@ import React from 'react'
 const WorkoutCard = () => {
   return (
     <button className="w-full text-start group">
-      <Card className="transition-colors flex items-center gap-6 px-6 py-4 border-none bg-gradient-to-br from-zinc-950 to-stone-950">
+      <Card className="transition-colors flex items-center gap-6 px-6 py-4 border-none bg-gradient-to-r from-zinc-900 to-zinc-950">
         <Icon name="Dumbbell" className="transition-colors stroke-slate-400 w-7 h-7 group-hover:stroke-red-500" />
         <div className="flex flex-col grow-[1] gap-1">
           <h2 className="text-xl text-slate-200">Upper body workout</h2>

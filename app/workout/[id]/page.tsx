@@ -1,6 +1,6 @@
 import { db } from "@/db/db";
 import { workouts } from "@/db/schema";
-import { eq, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 
 async function getWorkout(id: string) {
   const res = await db
@@ -13,11 +13,9 @@ async function getWorkout(id: string) {
 
 export default async function Workout({ params }: { params: { id: string } }) {
   const workout = await getWorkout(params.id);
-  console.log(workout)
   return (
     <main>
       <h1>{workout.title}</h1>
-      {params.id}
     </main>
   );
 }

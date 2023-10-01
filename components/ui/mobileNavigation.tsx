@@ -17,7 +17,7 @@ const MobileNavigation: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="flex justify-center fixed bottom-0 left-0 w-full p-4">
+    <nav className="flex w-fit">
       <ul className="flex w-fit justify-between bg-zinc-950 rounded-full overflow-hidden shadow-lg">
         {links.map((link) => (
           <li key={link.name}>
