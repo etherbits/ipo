@@ -1,0 +1,1 @@
+ALTER TABLE `workoutExercises` ADD `exercise_id` binary(16) NOT NULL;
