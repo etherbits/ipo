@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 import WorkoutCard from "@/components/ui/workoutCard";
 import { db } from "@/db/db";
 import { users, workouts } from "@/db/schema";
-import { sql } from "drizzle-orm";
+import { SQL, desc, sql } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
 async function getWorkouts() {
@@ -15,10 +15,9 @@ export default async function Home() {
   async function addWorkout() {
     "use server";
 
-    //! temporary before auth + drizzle odd
+    //! temporary before auth
     const res = await db.select({ id: sql`BIN_TO_UUID(id)` }).from(users);
 
-    await db.delete(workouts);
     //!
 
     await db.insert(workouts).values({
@@ -26,13 +25,15 @@ export default async function Home() {
       userId: sql`UUID_TO_BIN(${res[0].id})`,
     });
 
-    const newWorkout = (await db
-      .select({ id: sql`BIN_TO_UUID(id)` })
-      .from(workouts)) as { id: string }[];
+    const newWorkouts = await db
+      .select({
+        id: sql`BIN_TO_UUID(id)` as SQL<string>,
+        createdAt: workouts.createdAt,
+      })
+      .from(workouts)
+      .orderBy(desc(workouts.createdAt));
 
-    console.log(newWorkout);
-
-    redirect(`/workout/${newWorkout.at(-1)?.id}`);
+    redirect(`/workout/${newWorkouts[0]?.id}`);
   }
 
   const workoutList = await getWorkouts();

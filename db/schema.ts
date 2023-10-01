@@ -21,6 +21,7 @@ export const workouts = mysqlTable("workouts", {
     .default(sql`(UUID_TO_BIN(UUID()))`),
   title: varchar("name", { length: 256 }).notNull(),
   userId: binary("user_id", { length: 16 }).notNull(),
+  createdAt: datetime('created_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const exercise = mysqlTable("exercises", {
