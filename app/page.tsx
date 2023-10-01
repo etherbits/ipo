@@ -38,11 +38,25 @@ export default async function Home() {
     redirect(`/workout/${newWorkouts[0]?.id}`);
   }
 
+  async function removeWorkouts() {
+    "use server";
+    await db.delete(workouts);
+  }
+
   const workoutList = await getWorkouts();
 
   return (
     <main>
       <section className="flex items-center mt-4 mb-6">
+        <form action={removeWorkouts}>
+          <Button
+            size="icon"
+            className="bg-transparent border-none"
+            variant="outline"
+          >
+            <Icon name="Ban" />
+          </Button>
+        </form>
         <h1 className="xm:absolute xm:left-1/2 xm:-translate-x-1/2 text-2xl font-bold text-center">
           Workouts
         </h1>
