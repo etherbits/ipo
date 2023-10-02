@@ -1,5 +1,10 @@
 import { prismaClient } from "@/prisma/db";
 
+export async function getWorkout(id: string) {
+  const workout = await prismaClient.workout.findUnique({ where: { id } });
+  return workout;
+}
+
 export async function getWorkouts(userId: string) {
   const workouts = await prismaClient.workout.findMany({
     where: {

@@ -3,7 +3,11 @@ import Icon from "@/components/ui/icon";
 import WorkoutCard from "@/components/ui/workoutCard";
 import { getPageSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { addWorkout, getWorkouts, removeWorkouts } from "./workoutActions";
+import {
+  addWorkout,
+  getWorkouts,
+  removeWorkouts,
+} from "@/queries/workout";
 
 export default async function Home() {
   const { user } = (await getPageSession()) as {

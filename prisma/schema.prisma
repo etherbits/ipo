@@ -13,10 +13,10 @@ model User {
   auth_session Session[]
   key          Key[]
 
-  username     String @unique
-  email     String @unique
-  workouts     Workout[]
-  exercises    Exercise[]
+  username  String     @unique
+  email     String     @unique
+  workouts  Workout[]
+  exercises Exercise[]
 }
 
 model Session {
@@ -39,22 +39,25 @@ model Key {
 }
 
 model Workout {
-  id     String @id @default(cuid())
-  title  String
-  userId String
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id       String     @id @default(cuid())
+  title    String
+  userId   String
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exercises Exercise[]
 
   @@index(userId)
 }
 
 model Exercise {
-  id          String @id @default(cuid())
+  id          String  @id @default(cuid())
   title       String
   sets        Int
   reps        Int?
   durationSec Int?
   userId      String
-  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workoutId   String
+  workout     Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
 
-  @@index(userId)
+  @@index([userId, workoutId])
 }
