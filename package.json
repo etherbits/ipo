@@ -9,20 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.1",
+    "@lucia-auth/adapter-prisma": "^3.0.2",
     "@next/env": "^13.5.3",
     "@planetscale/database": "^1.11.0",
+    "@prisma/client": "5.3.1",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "drizzle-orm": "^0.28.6",
+    "lucia": "^2.7.1",
     "lucide": "^0.279.0",
     "lucide-react": "^0.279.0",
     "next": "latest",
     "next-themes": "^0.2.1",
     "react": "latest",
     "react-dom": "latest",
+    "react-hook-form": "^7.47.0",
     "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -33,6 +40,7 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
+    "prisma": "^5.3.1",
     "tailwindcss": "latest",
     "typescript": "latest"
   }
