@@ -1,4 +1,11 @@
 import {
+  Control,
+  ControllerProps,
+  FieldPath,
+  FieldValues,
+  Path,
+} from "react-hook-form";
+import {
   FormControl,
   FormField,
   FormItem,
@@ -8,14 +15,30 @@ import {
 import { Input } from "./input";
 import { InputHTMLAttributes } from "react";
 
-type Props = {
-  name: string;
-  label?: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+// type Props<
+//   TFieldValues extends FieldValues = FieldValues,
+//   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+// > = {
+//   name: string;
+//   label?: string;
+// } & InputHTMLAttributes<HTMLInputElement> &
+//   ControllerProps<TFieldValues, TName>;
 
-const FormInput: React.FC<Props> = ({ label, ...rest }) => {
+const FormInput = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+>({
+  control,
+  label,
+  ...rest
+}: {
+  label?: string;
+  name: Path<TFieldValues>;
+  control: Control<TFieldValues, TName>;
+} & InputHTMLAttributes<HTMLInputElement>) => {
   return (
     <FormField
+      control={control}
       name={rest.name}
       render={({ field }) => (
         <FormItem className="w-full">
