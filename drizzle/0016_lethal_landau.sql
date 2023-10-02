@@ -1,1 +1,0 @@
-ALTER TABLE `exercises` ADD `created_at` datetime DEFAULT CURRENT_TIMESTAMP;

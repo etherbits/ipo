@@ -1,1 +1,0 @@
-ALTER TABLE `workouts` ADD `creation_date` datetime DEFAULT CURRENT_DATE;

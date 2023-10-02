@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id       String     @id @default(cuid())
+  name     String
+  workouts Workout[]
+  Exercise Exercise[]
+}
+
+model Workout {
+  id     String @id @default(cuid())
+  title  String
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index(userId)
+}
+
+model Exercise {
+  id          String @id @default(cuid())
+  title       String
+  sets        Int
+  reps        Int?
+  durationSec Int?
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index(userId)
+}

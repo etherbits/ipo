@@ -28,7 +28,6 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <div className="mb-20">{children}</div>
         </ThemeProvider>
-        <MobileActionBar />
       </body>
     </html>
   );
