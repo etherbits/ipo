@@ -13,8 +13,8 @@ export default function SignUp() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
-      password: "",
+      email: "nika.qvrivishviliPC@gmail.com",
+      password: "asdasd123",
     },
   });
 
@@ -24,14 +24,25 @@ export default function SignUp() {
     <Card className="w-full mx-auto my-[20vh]">
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit((values) => {})}
+          onSubmit={form.handleSubmit(async (values) => {
+            const res = await fetch("/api/sign-in", {
+              method: "POST",
+              body: JSON.stringify(values),
+            });
+
+            if (!res.ok) {
+              console.error(res.statusText);
+              return;
+            }
+
+          })}
           className="flex flex-col items-center p-4 gap-6"
         >
           <h1>Sign Up</h1>
           <FormInput
             control={form.control}
-            name="username"
-            placeholder="user0"
+            name="email"
+            placeholder="example@gmail.com"
           />
           <FormInput
             control={form.control}
@@ -40,6 +51,11 @@ export default function SignUp() {
             placeholder="******"
           />
           <Button>Submit</Button>
+          <Button
+            type="button"
+          >
+            Test
+          </Button>
         </form>
       </Form>
     </Card>

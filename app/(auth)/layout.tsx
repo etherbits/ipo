@@ -1,4 +1,3 @@
-import MobileActionBar from "@/components/ui/mobileActionBar";
 import { auth } from "@/prisma/db";
 import * as context from "next/headers";
 import { redirect } from "next/navigation";
@@ -10,12 +9,7 @@ export default async function AppLayout({
 }) {
   const authRequest = auth.handleRequest("GET", context);
   const session = await authRequest.validate();
-  if (!session) redirect("/sign-in");
+  if (session) redirect("/");
 
-  return (
-    <>
-      {children}
-      <MobileActionBar />
-    </>
-  );
+  return <>{children}</>;
 }

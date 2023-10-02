@@ -14,37 +14,38 @@ import Icon from "@/components/ui/icon";
 // }
 //
 export default async function Home() {
-//   async function addWorkout() {
-//     "use server";
-//
-//     //! temporary before auth
-//     const res = await db.select({ id: sql`BIN_TO_UUID(id)` }).from(users);
-//
-//     //!
-//
-//     await db.insert(workouts).values({
-//       title: "Untitled Workout",
-//       userId: sql`UUID_TO_BIN(${res[0].id})`,
-//     });
-//
-//     const newWorkouts = await db
-//       .select({
-//         id: sql`BIN_TO_UUID(id)` as SQL<string>,
-//         createdAt: workouts.createdAt,
-//       })
-//       .from(workouts)
-//       .orderBy(desc(workouts.createdAt));
-//
-//     redirect(`/workout/${newWorkouts[0]?.id}`);
-//   }
-//
-//   async function removeWorkouts() {
-//     "use server";
-//     await db.delete(workouts);
-//   }
-//
-//   const workoutList = await getWorkouts();
-//
+
+  //   async function addWorkout() {
+  //     "use server";
+  //
+  //     //! temporary before auth
+  //     const res = await db.select({ id: sql`BIN_TO_UUID(id)` }).from(users);
+  //
+  //     //!
+  //
+  //     await db.insert(workouts).values({
+  //       title: "Untitled Workout",
+  //       userId: sql`UUID_TO_BIN(${res[0].id})`,
+  //     });
+  //
+  //     const newWorkouts = await db
+  //       .select({
+  //         id: sql`BIN_TO_UUID(id)` as SQL<string>,
+  //         createdAt: workouts.createdAt,
+  //       })
+  //       .from(workouts)
+  //       .orderBy(desc(workouts.createdAt));
+  //
+  //     redirect(`/workout/${newWorkouts[0]?.id}`);
+  //   }
+  //
+  //   async function removeWorkouts() {
+  //     "use server";
+  //     await db.delete(workouts);
+  //   }
+  //
+  //   const workoutList = await getWorkouts();
+  //
   return (
     <main>
       <section className="flex items-center mt-4 mb-6">
