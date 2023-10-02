@@ -35,6 +35,8 @@ export default function SignUp() {
               return;
             }
 
+            window.location.reload()
+
           })}
           className="flex flex-col items-center p-4 gap-6"
         >

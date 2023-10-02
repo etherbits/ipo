@@ -1,6 +1,5 @@
 import MobileActionBar from "@/components/ui/mobileActionBar";
-import { auth } from "@/prisma/db";
-import * as context from "next/headers";
+import { getPageSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
 export default async function AppLayout({
@@ -8,8 +7,7 @@ export default async function AppLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const authRequest = auth.handleRequest("GET", context);
-  const session = await authRequest.validate();
+  const session = await getPageSession();
   if (!session) redirect("/sign-in");
 
   return (

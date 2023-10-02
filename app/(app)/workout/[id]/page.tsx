@@ -37,57 +37,58 @@
 //   }
 // }
 //
-// export default async function Workout({ params }: { params: { id: string } }) {
-//   const workout = await getWorkout(params.id);
-//   const exerciseList = await getExercises(params.id);
-//
-//   async function addExercise() {
-//     "use server";
-//
-//     //! temporary before auth
-//     const res = await db.select({ id: sql`BIN_TO_UUID(id)` }).from(users);
-//
-//     //!
-//
-//     await db.insert(exercises).values({
-//       title: "Untitled Exercise",
-//       userId: sql`UUID_TO_BIN(${res[0].id})`,
-//     });
-//
-//     // hate that i have to do this ://////
-//     const newExercises = await db
-//       .select({
-//         id: sql`BIN_TO_UUID(id)` as SQL<string>,
-//         createdAt: exercises.createdAt,
-//       })
-//       .from(exercises)
-//       .orderBy(desc(exercises.createdAt));
-//
-//     await db.insert(workoutExercises).values({
-//       workoutId: sql`UUID_TO_BIN(${params.id})`,
-//       exerciseId: sql`UUID_TO_BIN(${newExercises[0].id})`,
-//     });
-//   }
-//
-//   return (
-//     <main>
-//       <section className="flex items-center mt-4 mb-6">
-//         <h1 className="text-2xl font-bold text-center">{workout.title}</h1>
-//         <form action={addExercise} className="ml-auto">
-//           <Button
-//             size="icon"
-//             className="bg-transparent border-none"
-//             variant="outline"
-//           >
-//             <Icon name="Plus" />
-//           </Button>
-//         </form>
-//       </section>
-//       <ul>
-//         {exerciseList.map((exercise) => (
-//           <li key={exercise.id}>{exercise.title}</li>
-//         ))}
-//       </ul>
-//     </main>
-//   );
-// }
+export default async function Workout({ params }: { params: { id: string } }) {
+  // const workout = await getWorkout(params.id);
+  // const exerciseList = await getExercises(params.id);
+  //
+  // async function addExercise() {
+  //   "use server";
+  //
+  //   //! temporary before auth
+  //   const res = await db.select({ id: sql`BIN_TO_UUID(id)` }).from(users);
+  //
+  //   //!
+  //
+  //   await db.insert(exercises).values({
+  //     title: "Untitled Exercise",
+  //     userId: sql`UUID_TO_BIN(${res[0].id})`,
+  //   });
+  //
+  //   // hate that i have to do this ://////
+  //   const newExercises = await db
+  //     .select({
+  //       id: sql`BIN_TO_UUID(id)` as SQL<string>,
+  //       createdAt: exercises.createdAt,
+  //     })
+  //     .from(exercises)
+  //     .orderBy(desc(exercises.createdAt));
+  //
+  //   await db.insert(workoutExercises).values({
+  //     workoutId: sql`UUID_TO_BIN(${params.id})`,
+  //     exerciseId: sql`UUID_TO_BIN(${newExercises[0].id})`,
+  //   });
+  // }
+  //
+  return (
+    <main>
+      <h1>{params.id}</h1>
+      {/* <section className="flex items-center mt-4 mb-6"> */}
+      {/*   <h1 className="text-2xl font-bold text-center">{workout.title}</h1> */}
+      {/*   <form action={addExercise} className="ml-auto"> */}
+      {/*     <Button */}
+      {/*       size="icon" */}
+      {/*       className="bg-transparent border-none" */}
+      {/*       variant="outline" */}
+      {/*     > */}
+      {/*       <Icon name="Plus" /> */}
+      {/*     </Button> */}
+      {/*   </form> */}
+      {/* </section> */}
+      {/* <ul> */}
+      {/*   {exerciseList.map((exercise) => ( */}
+      {/*     <li key={exercise.id}>{exercise.title}</li> */}
+      {/*   ))} */}
+      {/* </ul> */}
+    </main>
+  );
+}

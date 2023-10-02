@@ -1,4 +1,4 @@
-import { auth } from "@/prisma/db";
+import { auth } from "@/lib/auth";
 import { withParsedData } from "@/utils/endpoints";
 import { formSchema } from "@/zodSchemas/signInSchema";
 import { NextResponse } from "next/server";
