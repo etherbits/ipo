@@ -7,38 +7,24 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import FormInput from "@/components/ui/formInput";
-import { formSchema } from "@/zodSchemas/signUpSchema";
+import { formSchema } from "@/zodSchemas/signInSchema";
 
 export default function SignUp() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "testuser",
-      email: "testusr@gmail.com",
-      password: "asdasd123",
-      confirmPassword: "asdasd123",
+      username: "",
+      password: "",
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const res = await fetch("/api/sign-up", {
-      method: "POST",
-      body: JSON.stringify(values),
-    });
-
-    if (!res.ok) {
-      console.error(res.statusText);
-      return;
-    }
-
-    console.log("success");
-  };
+  console.log(form.formState.errors.password);
 
   return (
     <Card className="w-full mx-auto my-[20vh]">
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(onSubmit)}
+          onSubmit={form.handleSubmit((values) => {})}
           className="flex flex-col items-center p-4 gap-6"
         >
           <h1>Sign Up</h1>
@@ -49,21 +35,8 @@ export default function SignUp() {
           />
           <FormInput
             control={form.control}
-            type="email"
-            name="email"
-            placeholder="mail@gmail.com"
-          />
-          <FormInput
-            control={form.control}
             type="password"
             name="password"
-            placeholder="******"
-          />
-          <FormInput
-            control={form.control}
-            type="password"
-            name="confirmPassword"
-            label="Confirm Password"
             placeholder="******"
           />
           <Button>Submit</Button>
