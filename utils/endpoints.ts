@@ -4,7 +4,7 @@ import { ZodSchema } from "zod";
 export async function withParsedData<T>(
   req: Request,
   schema: ZodSchema<T>,
-  callback: (arg0: T) => NextResponse,
+  callback: (arg0: T) => Promise<NextResponse>,
 ) {
   const rawData = await req.json();
 

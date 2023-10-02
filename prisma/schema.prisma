@@ -13,7 +13,8 @@ model User {
   auth_session Session[]
   key          Key[]
 
-  username     String
+  username     String @unique
+  email     String @unique
   workouts     Workout[]
   exercises    Exercise[]
 }
