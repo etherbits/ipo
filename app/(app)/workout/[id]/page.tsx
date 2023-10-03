@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import ExerciseCard from "@/components/ui/exerciseCard";
 import Icon from "@/components/ui/icon";
 import { getPageSession } from "@/lib/auth";
 import { addExercise, getExercises } from "@/queries/exercise";
@@ -40,9 +41,9 @@ export default async function Workout({ params }: { params: { id: string } }) {
           </Button>
         </form>
       </section>
-      <ul>
+      <ul className="flex flex-col gap-4">
         {exerciseList.map((exercise) => (
-          <li key={exercise.id}>{exercise.title}</li>
+          <li key={exercise.id}><ExerciseCard {...exercise}/></li>
         ))}
       </ul>
     </main>

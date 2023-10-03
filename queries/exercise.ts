@@ -1,4 +1,7 @@
+"use server";
 import { prismaClient } from "@/prisma/db";
+import { exerciseSchema } from "@/zodSchemas/form";
+import { z } from "zod";
 
 export async function getExercises(userId: string, workoutId: string) {
   const exercises = await prismaClient.exercise.findMany({
@@ -23,4 +26,17 @@ export async function addExercise(userId: string, workoutId: string) {
   });
 
   return newExercise.id;
+}
+
+export async function updateExercise(
+  id: string,
+  values: z.infer<typeof exerciseSchema>,
+) {
+  console.log("update exercise")
+  await prismaClient.exercise.update({
+    where: { id },
+    data: {
+      ...values,
+    },
+  });
 }
